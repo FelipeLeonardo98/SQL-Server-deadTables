@@ -1,0 +1,20 @@
+		CONTEXTO (CASE)
+Este scrip foi pensado na seguinte situação:
+	Um sistema faz cadastro de usuários, tendo a segurança da senha criptograda.
+	O e-mail já foi colocado como UNIQUE Constraint para garantir que não sejam aceitos e-mails iguais.
+	Permissão de nível de acesso, com a Constraint CHECK para permitir somente "A" de administrador ou "P" de padrão,
+		tendo "P" como default, porém com insert padrão e não pela Procedure, caso queira mudar, é só alterar,
+		a Procedure ou criar outra sem o parâmetro "permissão".
+	Quando o usuário excluir a conta, seu cadastro ou ficar desativado, um Trigger pega seus registros e o transfere
+		para uma "tabela morta", ou seja, você não exclui o registro, só tira ele da tabela padrão.
+	Quando o usuário reativar seu cadastro, é só excluir ele da "tabela morta" que outro Trigger vai devolve-lo para,
+		tabela principal, com o mesmo ID(Primary Key) e uma senha genérica para ele alterar.
+
+Observações e pontos:
+	O Script tem comentários em inglês por motivo de estudo e treino pessoal;
+	Pode-se ser acrescentado o CPF seguindo o exemplo do e-mail, coloque tipo "char" para ocupar a quantidade certa;
+	O e-mail não está sendo validado no banco, mas pode ser, é comum fazer no formulário front-end, serve para CPF tbm;
+	A criptografia pode ser feita usando certificações e chaves também;
+	A validação de login, no momento da senha, funciona comparando as senhas criptografadas;
+	Poderiam sim ser adicionados manipulação de Update ou outros detalhes;
+	O intuito foi apresenta um manuseamento de Procedures, Triggers com uma finalidade em SQL-Server.
