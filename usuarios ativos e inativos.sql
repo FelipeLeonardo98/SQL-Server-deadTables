@@ -37,7 +37,7 @@ use imperio;
 		permissao char(1) CHECK(permissao='P' OR permissao='A') DEFAULT 'P' NOT NULL
 	);
 
-	select * from INSERTED;
+	
 -- Creating Trigger trg_insertUsuarioDesativado
 	GO
 	CREATE TRIGGER trg_insertUsuarioDesativado
